@@ -249,28 +249,90 @@
 * [cite_start]**定理**: 给定任意小于 $C$ 的正数 $R$，存在一个信息率 $R$ 的码，使得解码后错误的概率小于 $\epsilon$ [cite: 2937]。
 * [cite_start]**结论**: 信道容量是**可靠信息传输**可以发生的**最大速率** [cite: 2947]。
 
-## [cite_start]5. 数论与代数 (Chapter 5) [cite: 2957]
+## 5.数论与代数
+### 5.1 离散数学回顾 (Revision of Discrete Mathematics)
 
-* [cite_start]**最大公约数 (gcd)**: $d=gcd(a,b)$ [cite: 2973]。
-    * [cite_start]**Bezout 恒等式**: $d=gcd(a,b)=ax+by$ [cite: 2982]。
-    * [cite_start]**欧几里得算法 (Euclidean Algorithm)**: 用于寻找 $gcd(a,b)$ [cite: 2980]。
-* [cite_start]**逆元 (Inverse)**: $a^{-1} \pmod{m}$ 存在当且仅当 $gcd(a,m)=1$ [cite: 3036]。
-* [cite_start]**域 (Field)**: 每个非零元素都有逆元且满足算术规则的集合 [cite: 3061][cite_start]。$\mathbb{Z}_m$ 是域当且仅当 $m$ 是素数 [cite: 3062]。
-* [cite_start]**中国剩余定理 (Chinese Remainder Theorem, CRT)**: 求解 $x \equiv m_1 \pmod{p}, x \equiv m_2 \pmod{q}$ 的同余方程组 [cite: 3066, 3068, 3070]。
-* **$\phi$ 函数 (Euler's $\phi$-function)**: $\phi(m)=|\mathbb{U}_{m}| [cite_start]= \#\{a:1\le a<m, gcd(a,m)=1\}$ [cite: 3081, 3082, 3084]。
-* [cite_start]**原根 (Primitive Element)**: 对素数 $p$，存在 $g \in \mathbb{U}_p$ 使得 $\mathbb{U}_p = \{g^0, g^1, \cdot\cdot\cdot, g^{p-2}\}$ [cite: 3097]。
-* [cite_start]**阶 (Order)**: $ord_m(a)$ 是使 $a^k \equiv 1 \pmod{m}$ 的最小正整数 $k$ [cite: 3104]。
-* [cite_start]**Euler 定理**: 若 $gcd(a, m) = 1$，则 $a^{\phi(m)} \equiv 1 \pmod{m}$ [cite: 3106]。
-* [cite_start]**Fermat 小定理**: 对素数 $p$， $a^p \equiv a \pmod{p}$ [cite: 3109]。
-* **有限域 (Finite Fields, GF($p^n$))**:
-    * [cite_start]由 $Z_p[x] / \langle m(x) \rangle$ 构造，其中 $m(x)$ 是 $Z_p[x]$ 上次数为 $n$ 的**不可约 (irreducible)** 且**首一 (monic)** 多项式 [cite: 3163, 3164, 3196]。
-    * [cite_start]包含 $p^n$ 个元素 [cite: 3198]。
-    * [cite_start]存在一个**本原元 (primitive element)** $\gamma$ 使得 $F=\{0, 1, \gamma, \gamma^2, \cdot\cdot\cdot, \gamma^{p^n-2}\}$ [cite: 3198]。
-* [cite_start]**最小多项式/本原多项式 (Minimal/Primitive Polynomials)**: 描述了有限域元素的代数关系 [cite: 3221, 3223]。
-* [cite_start]**素性检验 (Primality Testing)**: 费马测试 (伪素数) [cite: 3250][cite_start]、卢卡斯测试 [cite: 3268][cite_start]、Miller-Rabin 测试 (概率性) [cite: 3275]。
-* [cite_start]**因式分解 (Factoring)**: 费马分解 [cite: 3314][cite_start]、Pollard's $\rho$ 方法 [cite: 3333][cite_start]、二次筛选法 [cite: 3349][cite_start]、Shor 算法 (量子计算机) [cite: 3381]。
-* [cite_start]**随机数生成 (Random Number Generation)**: 线性同余法 (LCR) [cite: 3406][cite_start]、线性反馈移位寄存器 (LFSR) [cite: 3420][cite_start]、密码学生成器 [cite: 3436]。
+#### 模运算和除法算法 (Modular Arithmetic and Division Algorithm)
+* [cite_start]**除法算法**: 对于任意 $a \in \mathbb{Z}$ 和 $b \in \mathbb{Z}^{+}$，存在唯一的整数 $q$ (商) 和 $r$ (余数) 使得 $a = bq + r$, 且 $0 \le r < b$ [cite: 7433, 7434, 7436][cite_start]。余数 $r$ 也记为 $a \pmod{b}$ [cite: 7441]。
+* [cite_start]**同余**: $a \equiv b \pmod{m}$ 意味着 $a$ 和 $b$ 除以 $m$ 留下相同的非负余数 [cite: 4562, 4563]。
+* [cite_start]**集合 $\mathbb{Z}_m$**: $\mathbb{Z}_m = \{0, 1, 2, \cdot\cdot\cdot, m-1\}$ [cite: 4585]。
 
+#### 最大公约数与欧几里得算法 (GCD and Euclidean Algorithm)
+* [cite_start]**最大公约数 (gcd)**: $d=gcd(a,b)$，是能整除 $a$ 和 $b$ 的最大正整数 [cite: 7443, 7444, 7445]。
+* [cite_start]**Bezout 恒等式**: $d=gcd(a,b)$ 总是可以表示成 $d=ax+by$，其中 $x, y$ 是整数 [cite: 7452]。
+* [cite_start]**欧几里得算法 (Euclidean Algorithm)**: 用于高效地找到 $gcd(a,b)$ 以及 Bezout 恒等式中的 $x, y$（通过**扩展欧几里得算法**） [cite: 7450, 7451, 7497]。
+* [cite_start]**互素 (Relatively Prime)**: 当 $gcd(a,b)=1$ 时，称 $a$ 和 $b$ 互素 [cite: 7454]。
+
+#### 逆元与域 (Inverse and Field)
+* [cite_start]**逆元 (Inverse)**: $a \in \mathbb{Z}_m$ 的逆元 $a^{-1}$ 存在，当且仅当方程 $ax \equiv 1 \pmod{m}$ 有解，即**当且仅当** $gcd(a,m)=1$ [cite: 7505, 7506]。
+* [cite_start]**域 (Field)**: 一个集合，其中每个非零元素都有乘法逆元，且加法、乘法和除法（乘逆元）都遵循常规的代数规则 [cite: 7531]。
+    * [cite_start]$\mathbb{Z}_m$ 是一个域，**当且仅当** $m$ 是一个**素数** $p$ [cite: 7532]。
+
+#### 中国剩余定理 (Chinese Remainder Theorem, CRT)
+* [cite_start]**定理**: 若 $p$ 和 $q$ 互素，则同余方程组 $x \equiv m_1 \pmod{p}, x \equiv m_2 \pmod{q}$ 有唯一的模 $pq$ 的解 [cite: 7538, 7539, 7540]。
+    * [cite_start]解的形式为 $x = m_1 + ps(m_2-m_1) \pmod{pq}$，其中 $s$ 是 $p$ 模 $q$ 的逆元 ($ps \equiv 1 \pmod{q}$) [cite: 7541, 7542]。
+
+### 5.2 数论结果 (Number Theory Results)
+
+* [cite_start]**欧拉 $\phi$ 函数 (Euler's $\phi$-function)**: $\phi(m)$ 定义为集合 $\mathbb{U}_m = \{a \in \mathbb{Z}_m : gcd(a,m)=1\}$（$\mathbb{Z}_m$ 中的可逆元素集合，即单位元）的大小 [cite: 7547, 7552, 7553]。
+    * [cite_start]若 $p$ 是素数，$\phi(p) = p-1$ [cite: 7557]。
+    * [cite_start]公式：$\phi(m) = m \prod_{p|m} (1 - \frac{1}{p})$ [cite: 7564]。
+* [cite_start]**阶 (Order)**: 对于 $a \in \mathbb{U}_m$，其阶 $ord_m(a)$ 是使得 $a^k \equiv 1 \pmod{m}$ 成立的最小正整数 $k$ [cite: 7574]。
+* [cite_start]**欧拉定理 (Euler's Theorem)**: 若 $gcd(a, m) = 1$，则 $a^{\phi(m)} \equiv 1 \pmod{m}$ [cite: 7576]。
+    * [cite_start]推论：元素的阶 $ord_m(a)$ 总是整除 $\phi(m)$ [cite: 7577]。
+* [cite_start]**费马小定理 (Fermat's Little Theorem)**: 对素数 $p$ 和任意整数 $a$，有 $a^p \equiv a \pmod{p}$ [cite: 7579]。
+* [cite_start]**原根 (Primitive Element)**: 对于素数 $p$，如果存在元素 $g \in \mathbb{U}_p$ 使得 $\mathbb{U}_p = \{g^0, g^1, \cdot\cdot\cdot, g^{p-2}\}$（即 $ord_p(g) = p-1$），则称 $g$ 为 $\mathbb{Z}_p$ 的原根 [cite: 7566, 7576]。
+
+### 5.3 $\mathbb{Z}_p$ 上的多项式 (Polynomials over $\mathbb{Z}_p$)
+
+* [cite_start]**定义**: $\mathbb{Z}_p[x]$ 表示系数在域 $\mathbb{Z}_p$ 中的多项式集合 [cite: 7581, 7586]。
+* [cite_start]**首一多项式 (Monic Polynomial)**: 最高次项系数为 1 的多项式 [cite: 7583]。
+* [cite_start]**不可约多项式 (Irreducible Polynomial)**: 类似于素数，一个多项式 $f(x)$ 除非能被常数或自身（乘以常数）整除，否则不能被分解 [cite: 7594, 7595]。
+* [cite_start]**多项式除法算法**: 类似于整数，给定 $f(x)$ 和 $g(x)$，存在 $q(x)$ 和 $r(x)$ 使得 $f(x) = g(x)q(x)+r(x)$，其中 $deg(r(x)) < deg(g(x))$ [cite: 7589]。
+* [cite_start]**多项式 GCD**: 类似于整数，多项式也有唯一（除去常数因子）的最大公约数 $d(x)$，可以通过**多项式欧几里得算法**找到 [cite: 7601, 7602]。
+
+### 5.4 有限域 (Finite Fields)
+
+* [cite_start]**构造**: 有限域 GF($p^n$) 是通过对 $\mathbb{Z}_p[x]$ 中的多项式**模**一个**次数为 $n$ 的不可约首一多项式 $m(x)$** 来构造的 [cite: 7619, 7620, 7634]。
+    $$\text{GF}(p^n) = \mathbb{Z}_p[x] / \langle m(x) \rangle$$
+* **性质**:
+    * [cite_start]GF($p^n$) 包含 $p^n$ 个元素 [cite: 7639, 7667]。
+    * [cite_start]它是 $\mathbb{Z}_p$ 上的 $n$ 维向量空间，以 $\{\alpha^{n-1}, \alpha^{n-2}, \cdot\cdot\cdot, \alpha, 1\}$ 为基，其中 $\alpha$ 是 $m(x)$ 的一个“根” [cite: 7666, 7667]。
+    * [cite_start]存在一个**本原元 (primitive element)** $\gamma$（其阶为 $p^n-1$），使得所有非零元素都可以表示为它的幂次：$F = \{0, 1, \gamma, \gamma^2, \cdot\cdot\cdot, \gamma^{p^n-2}\}$ [cite: 7668]。
+* [cite_start]**应用**: 利用幂次表示进行乘法运算，利用线性组合表示进行加法运算，使有限域中的算术更容易 [cite: 7665]。
+
+### 5.5 最小和本原多项式 (Minimal and Primitive Polynomials)
+
+* [cite_start]**最小多项式 (Minimal Polynomial)**: 对于 GF($p^n$) 中的任意元素 $\beta$，它是 $\mathbb{Z}_p[x]$ 中次数最小、首一且以 $\beta$ 为根的多项式 [cite: 7690][cite_start]。最小多项式一定是**不可约**的 [cite: 7691]。
+* [cite_start]**本原多项式 (Primitive Polynomial)**: 如果 $\beta$ 是 GF($p^n$) 的**本原元**，则其最小多项式被称为本原多项式 [cite: 7693][cite_start]。本原多项式的次数必须为 $n$ [cite: 7694]。
+    * [cite_start]本原多项式是构造有限域中最有用的不可约多项式 [cite: 7694]。
+* [cite_start]**根的性质**: 如果 $\beta$ 是 $g(x) \in \mathbb{Z}_p[x]$ 的根，那么 $\beta^p, \beta^{p^2}, \beta^{p^3}, \cdot\cdot\cdot$ 也是 $g(x)$ 的根 [cite: 7701]。
+
+### 5.6 素性检验 (Primality Testing)
+
+* [cite_start]**试除法 (Trial Division)**: 检查 $n$ 是否能被 $\le \sqrt{n}$ 的素数整除。对于大数来说效率低下 ($O(\sqrt{n})$) [cite: 7718, 7719]。
+* [cite_start]**伪素数检验 (Pseudo-prime Test)**: 利用费马小定理的推论：若 $n$ 是素数且 $gcd(a, n) = 1$，则 $a^{n-1} \equiv 1 \pmod{n}$ [cite: 7719, 7720][cite_start]。如果一个合数通过了检验，则称为**伪素数 (pseudo-prime)** [cite: 7722]。
+    * [cite_start]**卡迈克尔数 (Carmichael Number)**: 对所有与 $n$ 互素的基 $a$ 都是伪素数的合数 [cite: 7732]。
+* [cite_start]**米勒-拉宾检验 (Miller-Rabin Test)**: 一种**概率性**的素性检验，其错误概率低于 $(1/4)^k$，其中 $k$ 是测试的次数 [cite: 7745, 7754][cite_start]。它比试除法快得多 ($O(k(\log n)^3)$) [cite: 7758]。
+* [cite_start]**AKS 算法**: 第一个**确定性**且**多项式时间**的素性检验算法 [cite: 7766, 7767][cite_start]。但对于实际应用中的大数来说，它的速度慢于米勒-拉宾检验 [cite: 7769]。
+
+### 5.7 因式分解 (Factoring)
+
+* [cite_start]**难度**: 因式分解通常比素性检验难得多 [cite: 7779]。
+* [cite_start]**费马因式分解 (Fermat Factorization)**: 将 $n$ 表示为平方差 $n = t^2 - s^2 = (t+s)(t-s)$。当 $n$ 的两个因子 $a$ 和 $b$ 接近时 ($a \approx b$) 最有效 [cite: 7784, 7799]。
+* [cite_start]**Pollard's $\rho$ 方法**: 一种统计方法，通过生成一个序列 $x_{i+1} \equiv f(x_i) \pmod{n}$ 并寻找 $gcd(|x_i - x_j|, n)$ 来找到因子。预期找到最小因子 $p$ 的时间为 $O(\sqrt{p})$ [cite: 7805, 7817]。
+* [cite_start]**二次筛选法 (Quadratic Sieve Method)**: 目前已知对小于 110 位的大数最快的分解算法，其运行时间为 $e^{O(\sqrt{\log n \log \log n})}$ [cite: 7843]。
+* [cite_start]**Shor's Algorithm (Shor 算法)**: 基于量子计算机的算法，能够在多项式时间复杂度内分解大数，将彻底颠覆公钥密码学的安全性 [cite: 7850, 7861]。
+
+### 5.8 随机数生成 (Random Number Generation)
+
+* [cite_start]**伪随机数 (Pseudo-random Numbers)**: 由数学或计算过程生成的、具有一定随机特性的数字序列 [cite: 7869]。
+* [cite_start]**线性同余法 (Linear Congruential Method, LCR)**: $x_{i+1} \equiv ax_i + b \pmod{m}$。虽然在模拟中常用，但在密码学中不安全，因为通过几个连续项即可推导出参数 $a, b, m$ [cite: 7875, 7883]。
+* [cite_start]**线性反馈移位寄存器 (Linear Feedback Shift Registers, LFSR)**: 基于多项式同余 $x_{i+n} \equiv a_{n-1}x_{i+n-1} + \cdot\cdot\cdot + a_0x_i \pmod{p}$ 的序列生成器。当特征多项式为**本原多项式**时，可以达到最大周期 $p^n-1$ [cite: 7888, 7889]。
+* [cite_start]**密码学生成器 (Cryptographic Generators)**: 利用加密函数 $E_k(x)$ 迭代生成 $x_{i+1} = E_k(x_i)$ [cite: 7906]。
+    * [cite_start]**Blum, Blum, Shub (BBS)**: 一种可证明安全的随机比特生成器，基于模 $n=pq$ 的二次剩余，但速度很慢 [cite: 7908, 7914]。
+ 
+    * 
 ## [cite_start]6. 代数编码 (Chapter 6) [cite: 3454]
 
 * [cite_start]**BCH 码 (Bose, Chaudhuri, Hocquenghem Codes)**: 一类具有良好纠错性能的码 [cite: 3456, 3457]。
