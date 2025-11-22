@@ -1,0 +1,8 @@
+{
+  "jest.pathToJest": "npm test --",
+  "jest.autoRun": {
+    "watch": true,
+    "onStartup": ["all-tests"]
+  },
+  "jest.showCoverageOnLoad": true
+}
