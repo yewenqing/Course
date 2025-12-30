@@ -1,0 +1,9 @@
+./testClimber task2/1.in
+./testClimber task2/2.in
+./testClimber task2/3.in
+./testClimber task3/1.in
+./testClimber task3/2.in
+./testClimber task3/3.in
+./testClimber task4/1.in
+./testClimber task4/2.in
+./testClimber task4/3.in

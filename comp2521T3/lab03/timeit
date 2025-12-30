@@ -1,0 +1,33 @@
+#!/bin/sh
+
+case "$1" in
+	sortA) prog="./sortA" ;;
+	sortB) prog="./sortB" ;;
+	*)     echo "usage: $0 <sortA|sortB>"
+	       exit 1 ;;
+esac
+
+N=5 # number of times a test is repeated (to get an average)
+
+# TIP: You can edit the list of input sizes below
+for size in 10000 20000 40000 80000 160000
+do
+	# TIP: You can edit the list of input types below
+	#      For example, you could remove 'random' if you don't want to
+	#      time with random input
+	for order in random sorted reversed
+	do
+		echo === Timing $prog with $order input, size $size ===
+		for i in $(seq $N)
+		do
+			case $order in
+				random)   flag="R" ;;
+				sorted)   flag="A" ;;
+				reversed) flag="D" ;;
+			esac
+			{ ./gen $size $flag | /usr/bin/time -f "%U" "$prog" > /dev/null ; }
+		done
+		echo ""
+	done
+done
+

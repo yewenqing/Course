@@ -1,0 +1,34 @@
+
+========================================================================
+                         Implementation Journal
+========================================================================
+
+------------
+Task 1 entry
+------------
+Main challenges encountered and how you overcame them:
+- all things going fine when I doing Task1
+- 
+
+------------
+Task 2 entry
+------------
+Main challenges encountered and how you overcame them:
+- I had to create a pq when I try to complete dijskra
+- tacking path takes me lot of time
+
+------------
+Task 3 entry
+------------
+Main challenges encountered and how you overcame them:
+- Task 3 going fine, just change weight from 1 to different weight from Task 2
+- 
+
+------------
+Task 4 entry
+------------
+Main challenges encountered and how you overcame them:
+- I have to create a struct to record rock and energy and a new Pq for it, visited, dist and pred have to use 2d Array
+- 
+
+

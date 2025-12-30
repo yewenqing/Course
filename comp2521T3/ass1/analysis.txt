@@ -1,0 +1,111 @@
+
+========================================================================
+                          Complexity Analysis
+========================================================================
+
+NOTE: Your time complexities should be in big-O notation and should be
+      in terms of n and m, where n is the size of the first multiset
+      (s1), and m is the size of the second multiset (s2).
+
+------------------
+    MsetUnion
+------------------
+
+Worst-case time complexity:
+
+O((n + m) log (m+n))
+
+Explanation:
+
+MsetUnion first calls copyTree(s1->tree, result) to insert all n
+ nodes in s1 into an initially empty tree. Each insertion operation
+  takes O(log n) in the worst case, so this step takes O(n log n).
+
+Then, unionWith(s2->tree, result) iterates over all m nodes in s2. For each node, it calls MsetGetCount(result, n->elem) and may also call MsetSetCount(result, n->elem, n->count).
+result contains at most (m+n) nodes, so this step takes O(m log (m+n)).
+
+Thus, the total time complexity is:
+
+O((n + m) log (m+n)).
+
+
+------------------
+ MsetIntersection
+------------------
+
+Worst-case time complexity:
+
+O(n log (m))
+
+Explanation:
+
+MsetIntersection calls intersectionWith(s1->tree, s2, result),
+
+and for n nodes in s1, calls MsetGetCount(s2, n->elem).
+
+There are m nodes in s2, so the complexity of this step is log(m).
+
+And MsetInsertMany(result, n->elem, min(countInS2, n->count)).
+
+result has at most min(n, m) nodes, so the complexity of this step is also log(m).
+
+Therefore, the total time complexity is:
+
+O(n log (m)).
+------------------
+   MsetIncluded
+------------------
+
+Worst-case time complexity:
+
+O(n log (m))
+
+Explanation:
+
+MsetIncluded calls MsetIncludedHelper(s1->tree, s2, &b),
+
+and for each n node in s1, calls MsetGetCount(s2, n->elem).
+
+Since s2 has m nodes, the complexity of this step is log(m).
+
+Therefore, the total time complexity is:
+
+O(n log (m)).
+
+
+------------------
+    MsetEquals
+------------------
+
+Worst-case time complexity:
+
+O(n log (m))
+
+Explanation:
+
+MsetEquals calls MsetEqualsHelper(s1->tree, s2, &b),
+
+For the n nodes in s1, it calls MsetGetCount(s2, n->elem)
+
+S2 has m nodes, so the complexity of this step is log(m)
+
+Therefore, the total time complexity is:
+
+O(n log (m)).
+
+========================================================================
+               Design Documentation for Cursor Operations
+========================================================================
+
+If you completed the cursor operations, you must explain the design and
+implementation of your solution here.
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+
+NOTE:
+- Your time complexities should be expressed in big-O notation and be in
+  terms of n, where n is the number of people who  have  been  added  to
+  Friendbook.
+
+===============
+   FbFriend
+===============
+
+- Worst case time complexity: O(n)
+
+- Explanation: FbFriend calls FbIsFriend, and FbIsFriend calls inAdjList.inAdjList will traverse the linked list to find friends, and the length of the list is O(n) in the worst case (everyone is friends of these person).Adding a friend adjAddFriend is O(1), but finding whether it is a friend is O(n). Therefore, the dominant complexity of FbFriend is O(n).
+
+===============
+ FbNumFriends
+===============
+
+- Worst case time complexity: O(n)
+
+- Explanation: FbNumFriends traverses adj[id]. The worst case is that this person is friends with everyone, that is, the length of adj[id] is n, so the time complexity of FbNumFriends is O(n)
+
+===============
+FbMutualFriends
+===============
+
+- Worst case time complexity: O(n)
+
+- Explanation: FbMutualFriends uses double pointers. The worst case is that both people are friends with everyone, which means it needs to be iterated n times, so the time complexity is O(n).
+
+===============
+ FbFriendRecs1
+===============
+
+- Worst case time complexity: O(n^2)
+
+- Explanation: FbFriendRecs1 uses nested loops to count the number of common friends. The outer loop iterates over the friends of the target user, and the inner loop iterates over the friends of each friend. The worst case is when everyone is friends with each other, and the complexity is O(n^2).
+

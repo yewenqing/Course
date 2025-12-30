@@ -1,0 +1,47 @@
+
+========================================================================
+                         Implementation Journal
+========================================================================
+
+------------
+Part 1 entry
+------------
+Main challenges encountered and how you overcame them:
+- Initially, I was confused about the size and totalcount values ​​after inserts and deletes, 
+sometimes forgetting to change them or changing them repeatedly.
+
+- I streamlined the code logic so that size and totalcount are correctly counted.
+------------
+Part 2 entry
+------------
+Main challenges encountered and how you overcame them:
+- I forgot to copy tree into a new mset, just change the input mset
+- I create a function to copy tree and edit the new tree
+
+------------
+Part 3 entry
+------------
+Main challenges encountered and how you overcame them:
+- Most of the previous code needs to be refactored, it takes lot of time
+I was not clear about when to recalculate the height and when to do the rotation
+in delete, I first iterated to find succ, but this was very troublesome when 
+calculating the height and balancing the tree later, so I later changed 
+to using recursion and calculating the height and balancing the tree at 
+the same time.
+
+------------
+Part 4 entry
+------------
+Main challenges encountered and how you overcame them:
+When implementing MsetIndexOf, I mistakenly used -1 as the normal return value to calculate the index.
+
+I added a conditional to return -1 if the recursive return value is -1.
+
+------------
+Part 5 entry
+------------
+Main challenges encountered and how you overcame them:
+- 
+- 
+
+
